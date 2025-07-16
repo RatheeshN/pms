@@ -1,16 +1,18 @@
 <?php
 $routes = [
     '' => ['controller' => 'AuthController', 'action' => 'login'],
-    'auth/login' => ['controller' => 'AuthController', 'action' => 'login'], // Match the /auth/login URL
+    'auth/login' => ['controller' => 'AuthController', 'action' => 'login'], 
     'logout' => ['controller' => 'AuthController', 'action' => 'logout'],
     'dashboard' => ['controller' => 'DashboardController', 'action' => 'index'],
     'projects' => ['controller' => 'ProjectController', 'action' => 'index'],
     'projects/create' => ['controller' => 'ProjectController', 'action' => 'create'],
     'projects/edit/([0-9]+)' => ['controller' => 'ProjectController', 'action' => 'edit'],
+    'projects/update/([0-9]+)' => ['controller' => 'ProjectController', 'action' => 'update'], 
     'projects/delete/([0-9]+)' => ['controller' => 'ProjectController', 'action' => 'delete'],
     'tasks' => ['controller' => 'TaskController', 'action' => 'index'],
     'tasks/create' => ['controller' => 'TaskController', 'action' => 'create'],
     'tasks/edit/([0-9]+)' => ['controller' => 'TaskController', 'action' => 'edit'],
+    'tasks/update/([0-9]+)' => ['controller' => 'TaskController', 'action' => 'update'],
     'tasks/delete/([0-9]+)' => ['controller' => 'TaskController', 'action' => 'delete'],
 ];
 

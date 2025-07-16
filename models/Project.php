@@ -46,5 +46,25 @@ class Project {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getProjectById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM projects WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function updateProject($id, $name, $description) {
+        $stmt = $this->db->prepare("UPDATE projects SET name = :name, description = :description WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':description', $description);
+        $stmt->execute();
+    }
+
+    public function deleteProject($id) {
+        $stmt = $this->db->prepare("DELETE FROM projects WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
 }
 ?>

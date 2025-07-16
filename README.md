@@ -5,11 +5,11 @@
 2. Update `config/database.php` with your database credentials
 3. Place files in your web server directory
 4. Ensure `public/uploads/` is writable
-5. Access via `public/index.php`
+5. Access via `pms/public`
 
 ## Test Credentials
-- Admin: username: admin, password: password
-- Member: username: member1, password: password
+- Admin: username: admin@gmail.com, password: password
+- Member: username: member1@gmail.com, password: password
 
 ## Project Structure
 - `config/`: Database configuration

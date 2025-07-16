@@ -1,7 +1,9 @@
-<?php $content = __FILE__; ?>
+<?php $content = ob_get_clean(); ?>
 <?php include __DIR__ . '/../layouts/main.php'; ?>
 <h2>Tasks</h2>
-<a href="/tasks/create" class="btn btn-primary mb-3">Create Task</a>
+<?php if ($_SESSION['role'] === 'admin'): ?>
+<a href="/pms/public/tasks/create" class="btn btn-primary mb-3">Create Task</a>
+<?php endif; ?>
 <form method="GET" class="mb-3">
     <div class="row">
         <div class="col">
@@ -42,7 +44,9 @@
             <th>Priority</th>
             <th>Status</th>
             <th>Attachment</th>
+            <?php if ($_SESSION['role'] === 'admin'): ?>
             <th>Actions</th>
+            <?php endif; ?>
         </tr>
     </thead>
     <tbody>
@@ -55,13 +59,15 @@
                 <td><?php echo $task['status']; ?></td>
                 <td>
                     <?php if ($task['attachment']): ?>
-                        <a href="/uploads/<?php echo $task['attachment']; ?>" download>Download</a>
+                        <a href="/pms/public/uploads/<?php echo $task['attachment']; ?>" download>Download</a>
                     <?php endif; ?>
                 </td>
+                <?php if ($_SESSION['role'] === 'admin'): ?>
                 <td>
-                    <a href="/tasks/edit/<?php echo $task['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="/tasks/delete/<?php echo $task['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="/pms/public/tasks/edit/<?php echo $task['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/pms/public/tasks/delete/<?php echo $task['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                 </td>
+                <?php endif; ?>
             </tr>
         <?php endforeach; ?>
     </tbody>

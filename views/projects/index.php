@@ -1,4 +1,4 @@
-<?php $content = __FILE__; ?>
+<?php $content = ob_get_clean(); ?>
 <?php include __DIR__ . '/../layouts/main.php'; ?>
 <h2>Projects</h2>
 <?php if ($_SESSION['role'] === 'admin'): ?>

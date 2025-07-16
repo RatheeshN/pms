@@ -35,5 +35,27 @@ class Task {
         $stmt->bindParam(':attachment', $attachment);
         $stmt->execute();
     }
+    public function getTaskById($id) {
+        $stmt = $this->db->prepare("SELECT t.*, p.name as project_name FROM tasks t LEFT JOIN projects p ON t.project_id = p.id WHERE t.id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function updateTask($id, $title, $description, $due_date, $project_id) {
+        $stmt = $this->db->prepare("UPDATE tasks SET title = :title, description = :description, due_date = :due_date, project_id = :project_id WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':due_date', $due_date);
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function deleteTask($id) {
+        $stmt = $this->db->prepare("DELETE FROM tasks WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
 }
 ?>

@@ -1,4 +1,4 @@
-<?php $content = __FILE__; ?>
+<?php $content = ob_get_clean(); ?>
 <?php include __DIR__ . '/../layouts/main.php'; ?>
 <h2>Create Task</h2>
 <form method="POST" enctype="multipart/form-data">

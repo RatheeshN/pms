@@ -1,6 +1,8 @@
 <?php
-$content = __FILE__;
+ob_start();
+$content = ob_get_clean();
 include __DIR__ . '/../layouts/main.php';
+
 ?>
 <div class="card">
     <div class="card-body">
