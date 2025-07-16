@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /pms/
+
+    RewriteRule ^public/index\.php$ - [L]
+    RewriteCond %{REQUEST_URI} !^/pms/public/ [NC]
+    RewriteCond %{REQUEST_FILENAME} \.php$ [NC]
+    RewriteRule ^ - [F,L]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_URI} \.(css|js|jpg|jpeg|png|gif|pdf|docx)$ [NC]
+    RewriteRule ^ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/index.php [L,QSA]
+</IfModule>
+Options -Indexes
+php_value upload_max_filesize 5M
+php_value post_max_size 5M
